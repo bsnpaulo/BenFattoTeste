@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TR.BenFatto.Domain", "TR.Be
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TR.BenFatto.Application", "TR.BenFatto.Application\TR.BenFatto.Application.csproj", "{7D0AD17C-7BE4-42BE-B3BD-FE2E75334F6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TR.BenFatto.Test", "TR.BenFatto.Test\TR.BenFatto.Test.csproj", "{0E3C745C-22B2-41F2-AE65-D7BF74C33F1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{7D0AD17C-7BE4-42BE-B3BD-FE2E75334F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D0AD17C-7BE4-42BE-B3BD-FE2E75334F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D0AD17C-7BE4-42BE-B3BD-FE2E75334F6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E3C745C-22B2-41F2-AE65-D7BF74C33F1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E3C745C-22B2-41F2-AE65-D7BF74C33F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E3C745C-22B2-41F2-AE65-D7BF74C33F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E3C745C-22B2-41F2-AE65-D7BF74C33F1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TR.BenFatto.Web.MappingConfig;
+using FluentValidation.AspNetCore;
 
 namespace TR.BenFatto.Web
 {
@@ -34,6 +35,9 @@ namespace TR.BenFatto.Web
             #endregion
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
+            services.AddMvc()
+               .AddFluentValidation(fvc =>
+                           fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
