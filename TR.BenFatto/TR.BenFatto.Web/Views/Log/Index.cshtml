@@ -1,0 +1,198 @@
+﻿@*@model IEnumerable<TR.BenFatto.Application.ViewModels.UserLogViewModel>
+
+    @{ ViewData["Title"] = "Manutenção de LOGs"; }
+
+    @if (ViewBag.Erro != null)
+    {
+    <div class="alert alert-danger">
+        <p><strong>Erro:</strong> @ViewBag.Erro.ToString()</p>
+    </div>}
+
+    <style>
+        .modal-lg {
+            max-width: 85%;
+        }
+    </style>
+
+    <div>
+        <h2>@ViewData["Title"]</h2>
+    </div>
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body wizard-content">
+                    <section>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-9">
+                                <label class="narrow-control label-top-left" for="txtSistema">IP</label>
+                                @Html.TextBox("ip", ViewBag.ip as string, new { @class = "wide-control form-control default", id = "ip" })
+                            </div>
+                            <div class="col-lg-6 col-md-9">
+                                <label class="narrow-control label-top-left" for="txtSistema">Hora</label>
+                                @Html.TextBox("hour", ViewBag.hour as string, new { @class = "wide-control form-control default", id = "hour", Type = "time" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-12 col-md-9">
+                                <label class="narrow-control label-top-left">User Agent</label>
+                                @Html.TextBox("userAgent", ViewBag.userAgent as string, new { @class = "wide-control form-control default", id = "userAgent" })
+                            </div>
+                        </div>
+                        <br />
+
+                    </section>
+                    <br />
+                    <a asp-action="Index" class="btn btn-primary" asp-route-ip=ip>
+                        <span title="Pesquisar" class="fas fa-plus"></span> Pesquisar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>}
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div class="pull-left">
+                    <a asp-action="Create" class="btn btn-primary">
+                        <span title="Cadastrar" class="fas fa-plus"></span> Cadastrar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="panel panel-default">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.IpAdress)</th>
+                    <th>@Html.DisplayNameFor(model => model.NormalizedDate)</th>
+                    <th>@Html.DisplayNameFor(model => model.UserAgent)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.IpAdress)</td>
+        <td>@Html.DisplayFor(modelItem => item.NormalizedDate)</td>
+        <td>@Html.DisplayFor(modelItem => item.UserAgent)</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.Id" title="Alterar" class="btn btn-warning">
+                <span class="fas fa-edit">Alterar</span>
+            </a>
+            <a asp-action="Details" asp-route-id="@item.Id" title="Detalhar" class="btn btn-primary">
+                <span class="fas fa-search">Detalhar</span>
+            </a>
+            <a asp-action="Delete" asp-route-id="@item.Id" title="Excluir" class="btn btn-danger">
+                <span class="fas fa-trash-alt">Excluir</span>
+            </a>
+        </td>
+    </tr>}
+            </tbody>
+        </table>
+    </div>*@
+
+@model IEnumerable<TR.BenFatto.Application.ViewModels.UserLogViewModel>
+
+@{ ViewBag.Title = "Log"; }
+
+@if (ViewBag.Sucesso != null)
+{
+<div class="alert alert-success">
+    <p><strong>Sucesso:</strong> @ViewBag.Sucesso.ToString()</p>
+</div>}
+
+@if (ViewBag.Info != null)
+{
+<div class="alert alert-info">
+    <p><strong>Informação:</strong> @ViewBag.Info.ToString()</p>
+</div>}
+
+@if (ViewBag.Erro != null)
+{
+<div class="alert alert-danger">
+    <p><strong>Erro:</strong> @ViewBag.Erro.ToString()</p>
+</div>}
+
+@using (Html.BeginForm())
+{
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body wizard-content">
+                <h4 class="card-title">Pesquisa de Log</h4>
+                <h6 class="card-subtitle"></h6>
+                <br />
+                <div>
+                    <section>
+                        <label class="narrow-control label-top-left" for="txtCodigo">IP</label>
+                        @Html.TextBox("ip", ViewBag.CurrentFilter as string, new { @class = "wide-control form-control default" })
+                        <br />
+                        <label class="narrow-control label-top-left" for="txtNome">Hora</label>
+                        @Html.TextBox("hour", ViewBag.CurrentFilter as string, new { @class = "wide-control form-control default", Type = "time" })
+                        <br />
+                        <label class="narrow-control label-top-left" for="txtNome">User Agent</label>
+                        @Html.TextBox("userAgent", ViewBag.CurrentFilter as string, new { @class = "wide-control form-control default" })
+                        <br />
+                    </section>
+                    <br />
+                    <input class="btn btn-dark" type="submit" value="Pesquisar" />
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Log")'">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                <br />
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Relação de Cargos</h5>
+                <DIV id="DIVgrid" style="OVERFLOW: auto; WIDTH: 100%; HEIGHT: 500px;">
+                    <div class="table-responsive">
+                        <table id="zero_config" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>IP</th>
+                                    <th>Data</th>
+                                    <th>UserAgent</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ if (Model != null)
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.IpAdress)</td>
+                            <td>@Html.DisplayFor(modelItem => item.NormalizedDate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.UserAgent)</td>
+                            <td>
+                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Visualizar" onclick="location.href='@Url.Action("Details", "Log", new { id = item.Id })'"><i class="fas fa-eye"></i></button>
+                                <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Alterar" onclick="location.href='@Url.Action("Edit", "Log", new { id = item.Id })'"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </tr>
+ }
+                } }
+                            </tbody>
+                        </table>
+                    </div>
+                </DIV>
+            </div>
+        </div>
+    </div>
+</div>
+

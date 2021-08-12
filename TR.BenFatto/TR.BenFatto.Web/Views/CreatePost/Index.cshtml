@@ -1,0 +1,38 @@
+﻿@model TR.BenFatto.Application.ViewModels.CreatePost
+
+@if (ViewBag.Erro != null)
+{
+    <div class="alert alert-danger">
+        <p><strong>Erro:</strong> @ViewBag.Erro.ToString()</p>
+    </div>
+}
+
+@if (ViewBag.Sucesso != null)
+{
+    <div class="alert alert-success">
+        <p><strong>Sucesso:</strong> @ViewBag.Sucesso.ToString()</p>
+    </div>
+}
+
+<form asp-action="Index" enctype="multipart/form-data">
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body wizard-content">
+                    <h4 class="card-title">Upload de arquivo de LOG</h4>
+                    <h6 class="card-subtitle"></h6>
+                    <br />
+                    <div>
+                        <section>
+                            <input asp-for="Arquivo" />
+                            <input type="submit" />
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

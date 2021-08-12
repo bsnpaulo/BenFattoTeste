@@ -1,0 +1,49 @@
+﻿@model TR.BenFatto.Application.ViewModels.ProductViewModel
+
+@{
+    ViewData["Title"] = "Alterar produto";
+}
+
+@if (ViewBag.Erro != null)
+{
+    <div class="alert alert-danger">
+        <p><strong>Erro:</strong> @ViewBag.Erro.ToString()</p>
+    </div>
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <hr />
+        <vc:summary />
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 custom-control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Points" class="col-md-2 custom-control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Points" id="Price" class="form-control" />
+                <span asp-validation-for="Points" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Category.Name" class="col-md-2 custom-control-label"></label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CategoryId, (IEnumerable<SelectListItem>)ViewBag.ListaCategoria, "Selecione...", new { @class = "form-control", id = "ddlCategoria", @required = "@required" })
+                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Alterar" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-info">Voltar</a>
+            </div>
+        </div>
+    </div>
+</form>

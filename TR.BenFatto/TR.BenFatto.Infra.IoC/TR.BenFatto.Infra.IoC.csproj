@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TR.BenFatto.Application\TR.BenFatto.Application.csproj" />
+    <ProjectReference Include="..\TR.BenFatto.Domain\TR.BenFatto.Domain.csproj" />
+    <ProjectReference Include="..\TR.BenFatto.Infra.Data\TR.BenFatto.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

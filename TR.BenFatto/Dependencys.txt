@@ -1,0 +1,5 @@
+domain 
+app  -> domain
+data -> domain
+ioc  -> domain, app, data
+web  -> data, ioc
